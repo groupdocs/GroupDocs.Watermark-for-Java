@@ -53,6 +53,7 @@ import com.groupdocs.watermark.PdfImageConversionFormat;
 import com.groupdocs.watermark.PdfPage;
 import com.groupdocs.watermark.PdfPageMarginType;
 import com.groupdocs.watermark.PdfSearchableObjects;
+import com.groupdocs.watermark.PdfWatermarkableImage;
 import com.groupdocs.watermark.PdfXObject;
 import com.groupdocs.watermark.PossibleWatermarkCollection;
 import com.groupdocs.watermark.SearchCriteria;
@@ -77,7 +78,9 @@ import com.groupdocs.watermark.WatermarkableImage;
 import com.groupdocs.watermark.WatermarkableImageCollection;
 import com.groupdocs.watermark.WordsDocument;
 import com.groupdocs.watermark.WordsImageEffects;
+import com.groupdocs.watermark.WordsLockType;
 import com.groupdocs.watermark.WordsPageSetup;
+import com.groupdocs.watermark.WordsProtectionType;
 import com.groupdocs.watermark.WordsSection;
 import com.groupdocs.watermark.WordsShape;
 import com.groupdocs.watermark.WordsShapeSettings;
@@ -894,6 +897,223 @@ public class Documents {
 				exp.printStackTrace();
 			}
 		}
+
+		/**
+		 * Replaces text for particular XObject
+		 */
+		public static void replaceTextForParticularXObject() {
+			try {
+				// ExStart:ReplaceTextForParticularXObject_18.3
+				PdfDocument doc = Document.load(PdfDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				for (PdfXObject xObject : doc.getPages().get_Item(0).getXObjects()) {
+					if (xObject.getText().contains("Test")) {
+						xObject.setText("Passed");
+					}
+				}
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:ReplaceTextForParticularXObject_18.3
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
+		/**
+		 * Replaces text for particular artifact
+		 */
+		public static void replaceTextForParticularArtifact() {
+			try {
+				// ExStart:ReplaceTextForParticularArtifact_18.3
+				PdfDocument doc = Document.load(PdfDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				for (PdfArtifact artifact : doc.getPages().get_Item(0).getArtifacts()) {
+					if (artifact.getText().contains("Test")) {
+						artifact.setText("Passed");
+					}
+				}
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:ReplaceTextForParticularArtifact_18.3
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
+		/**
+		 * Replaces text for particular annotation
+		 */
+		public static void replaceTextForParticularAnnotation() {
+			try {
+				// ExStart:ReplaceTextForParticularAnnotation_18.3
+				PdfDocument doc = Document.load(PdfDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				for (PdfAnnotation annotation : doc.getPages().get_Item(0).getAnnotations()) {
+					if (annotation.getText().contains("Test")) {
+						annotation.setText("Passed");
+					}
+				}
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:ReplaceTextForParticularAnnotation_18.3
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
+		/**
+		 * Replaces text for particular XObject with formatting
+		 */
+		public static void replaceTextForParticularXObjectWithFormatting() {
+			try {
+				// ExStart:ReplaceTextForParticularXObjectWithFormatting_18.3
+				PdfDocument doc = Document.load(PdfDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				for (PdfXObject xObject : doc.getPages().get_Item(0).getXObjects()) {
+					if (xObject.getText().contains("Test")) {
+						xObject.getFormattedTextFragments().clear();
+						xObject.getFormattedTextFragments().add("Passed", new Font("Calibri", 19, FontStyle.Bold),
+								Color.getRed(), Color.getAqua());
+					}
+				}
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:ReplaceTextForParticularXObjectWithFormatting_18.3
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
+		/**
+		 * Replaces text for particular artifact with formatting
+		 */
+		public static void replaceTextForParticularArtifactWithFormatting() {
+			try {
+				// ExStart:ReplaceTextForParticularArtifactWithFormatting_18.3
+				PdfDocument doc = Document.load(PdfDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				for (PdfArtifact artifact : doc.getPages().get_Item(0).getArtifacts()) {
+					if (artifact.getText().contains("Test")) {
+						artifact.getFormattedTextFragments().clear();
+						artifact.getFormattedTextFragments().add("Passed", new Font("Calibri", 19, FontStyle.Bold),
+								Color.getRed(), Color.getAqua());
+					}
+				}
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:ReplaceTextForParticularArtifactWithFormatting_18.3
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
+		/**
+		 * Replaces text for particular annotation with formatting
+		 */
+		public static void replaceTextForParticularAnnotationWithFormatting() {
+			try {
+				// ExStart:ReplaceTextForParticularAnnotationWithFormatting_18.3
+				PdfDocument doc = Document.load(PdfDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				for (PdfAnnotation annotation : doc.getPages().get_Item(0).getAnnotations()) {
+					if (annotation.getText().contains("Test")) {
+						annotation.getFormattedTextFragments().clear();
+						annotation.getFormattedTextFragments().add("Passed", new Font("Calibri", 19, FontStyle.Bold),
+								Color.getRed(), Color.getAqua());
+					}
+				}
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:ReplaceTextForParticularAnnotationWithFormatting_18.3
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
+		/**
+		 * Replaces image for particular XObject
+		 */
+		public static void replaceImageForParticularXObject() {
+			try {
+				// ExStart:ReplaceImageForParticularXObject_18.3
+				PdfDocument doc = Document.load(PdfDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				String imagePath = "D:\\test.png";
+				File imageFile = new File(imagePath);
+				byte[] imageBytes = new byte[(int) imageFile.length()];
+				InputStream imageInputStream = new FileInputStream(imageFile);
+				imageInputStream.read(imageBytes);
+				imageInputStream.close();
+
+				for (PdfXObject xObject : doc.getPages().get_Item(0).getXObjects()) {
+					if (xObject.getImage() != null) {
+						xObject.setImage(new PdfWatermarkableImage(imageBytes));
+					}
+				}
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:ReplaceImageForParticularXObject_18.3
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
+		/**
+		 * Replaces image for particular artifact
+		 */
+		public static void replaceImageForParticularArtifact() {
+			try {
+				// ExStart:ReplaceImageForParticularArtifact_18.3
+				PdfDocument doc = Document.load(PdfDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				String imagePath = "D:\\test.png";
+				File imageFile = new File(imagePath);
+				byte[] imageBytes = new byte[(int) imageFile.length()];
+				InputStream imageInputStream = new FileInputStream(imageFile);
+				imageInputStream.read(imageBytes);
+				imageInputStream.close();
+
+				for (PdfArtifact artifact : doc.getPages().get_Item(0).getArtifacts()) {
+					if (artifact.getImage() != null) {
+						artifact.setImage(new PdfWatermarkableImage(imageBytes));
+					}
+				}
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:ReplaceImageForParticularArtifact_18.3
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
+		/**
+		 * Replaces image for particular annotation
+		 */
+		public static void replaceImageForParticularAnnotation() {
+			try {
+				// ExStart:ReplaceImageForParticularAnnotation_18.3
+				PdfDocument doc = Document.load(PdfDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				String imagePath = "D:\\test.png";
+				File imageFile = new File(imagePath);
+				byte[] imageBytes = new byte[(int) imageFile.length()];
+				InputStream imageInputStream = new FileInputStream(imageFile);
+				imageInputStream.read(imageBytes);
+				imageInputStream.close();
+
+				for (PdfAnnotation annotation : doc.getPages().get_Item(0).getAnnotations()) {
+					if (annotation.getImage() != null) {
+						annotation.setImage(new PdfWatermarkableImage(imageBytes));
+					}
+				}
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:ReplaceImageForParticularAnnotation_18.3
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
 	}
 
 	public static class Word {
@@ -940,6 +1160,86 @@ public class Documents {
 				doc.save(Common.mapOutputFilePath(FILE_PATH));
 				doc.close();
 				// ExEnd:AddWatermarkToParticuarPageWord
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
+		/**
+		 * Adds locked watermark to a section of Word document
+		 **/
+		public static void addLockedWatermarkToSection() {
+			try {
+				// ExStart:AddLockedWatermarkToSection_18.6
+				WordsDocument doc = Document.load(WordsDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				
+				TextWatermark watermark = new TextWatermark("Watermark text", new Font("Arial", 19));
+				watermark.setForegroundColor(Color.getRed());
+				 
+				WordsShapeSettings settings = new WordsShapeSettings();
+				settings.setLocked(true);
+				settings.setLockType(WordsLockType.ReadOnlyWithEditableContent);
+				settings.setPassword("7654321");
+				 
+				doc.getSections().get_Item(0).addWatermark(watermark, settings);
+				
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:AddLockedWatermarkToSection_18.6
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
+		/**
+		 * Adds locked watermark to all pages of Word document
+		 **/
+		public static void addLockedWatermarkToAllPages() {
+			try {
+				// ExStart:AddLockedWatermarkToAllPages_18.6
+				WordsDocument doc = Document.load(WordsDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				TextWatermark watermark = new TextWatermark("Watermark text", new Font("Arial", 19));
+				watermark.setForegroundColor(Color.getRed());
+				 
+				WordsShapeSettings settings = new WordsShapeSettings();
+				settings.setLocked(true);
+				settings.setLockType(WordsLockType.AllowOnlyFormFields);
+				settings.setPassword("7654321");
+				 
+				doc.addWatermark(watermark, settings);
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:AddLockedWatermarkToAllPages_18.6
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
+		/**
+		 * Adds locked watermark to particular pages of Word document
+		 **/
+		public static void addLockedWatermarkToParticularPages() {
+			try {
+				// ExStart:AddLockedWatermarkToParticularPages_18.6
+				WordsDocument doc = Document.load(WordsDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				
+				TextWatermark watermark = new TextWatermark("Watermark text", new Font("Arial", 19));
+				watermark.setForegroundColor(Color.getRed());
+				 
+				WordsShapeSettings settings = new WordsShapeSettings();
+				settings.setPageNumbers(new int[] { 1, 3 });
+				settings.setLocked(true);
+				settings.setLockType(WordsLockType.AllowOnlyComments);
+				settings.setPassword("7654321");
+				 
+				doc.addWatermark(watermark, settings);
+				
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:AddLockedWatermarkToParticularPages_18.6
 			} catch (Exception exp) {
 				System.out.println("Exception: " + exp.getMessage());
 				exp.printStackTrace();
@@ -1430,6 +1730,40 @@ public class Documents {
 				doc.save(Common.mapOutputFilePath(FILE_PATH));
 				doc.close();
 				// ExEnd:RemoveHyperlinksWord_1
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
+		/**
+		 * Protects a Word document
+		 */
+		public static void protectWordDocument() {
+			try {
+				// ExStart:ProtectWordDocument_18.6
+				WordsDocument doc = Document.load(WordsDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				doc.protect(WordsProtectionType.ReadOnly, "7654321");
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:ProtectWordDocument_18.6
+			} catch (Exception exp) {
+				System.out.println("Exception: " + exp.getMessage());
+				exp.printStackTrace();
+			}
+		}
+
+		/**
+		 * Removes protection from Word document
+		 */
+		public static void unprotectWordDocument() {
+			try {
+				// ExStart:UnProtectWordDocument_18.6
+				WordsDocument doc = Document.load(WordsDocument.class, Common.mapSourceFilePath(FILE_PATH));
+				doc.unprotect();
+				doc.save(Common.mapOutputFilePath(FILE_PATH));
+				doc.close();
+				// ExEnd:UnProtectWordDocument_18.6
 			} catch (Exception exp) {
 				System.out.println("Exception: " + exp.getMessage());
 				exp.printStackTrace();

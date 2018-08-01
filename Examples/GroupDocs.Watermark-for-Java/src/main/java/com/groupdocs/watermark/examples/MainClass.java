@@ -4,17 +4,17 @@ public class MainClass {
 	public static void main(String[] args) throws Throwable {
 
 		// Uncomment following code if you have license file
-		Common.applyLicenseFromFile();
+		//Common.applyLicenseFromFile();
 
 		// Using metered license
 		// Common.useDynabicMeteredAccount();
 
 		// Working with Watermark Operations
 		// Add image watermark to any supported document
-		// WatermarkOperations.addImageWatermark();
+		//WatermarkOperations.addImageWatermark();
 
 		// Add image watermark to any supported document using stream
-		// WatermarkOperations.addImageWatermarkUsingStream();
+		 //WatermarkOperations.addImageWatermarkUsingStream();
 
 		// Add text watermark to any supported document
 		// WatermarkOperations.addTextWatermark();
@@ -81,7 +81,7 @@ public class MainClass {
 
 		// Add watermark to images
 		// Documents.PDF.addWatermarkToImages();
-		
+
 		// Add watermark to XObjects
 		// Documents.PDF.addWatermarkToXObjects();
 
@@ -358,7 +358,34 @@ public class MainClass {
 		// Documents.Email.addEmbeddedImage();
 
 		// Working with images
-		// Images.AddWatermarkToMultiframeImageDocument();
+		// Images.addWatermarkToMultiframeImageDocument();
+
+		// Replace text for particular XObject
+		// Documents.PDF.replaceTextForParticularXObject();
+
+		// Replace text for particular artifact
+		// Documents.PDF.replaceTextForParticularArtifact();
+
+		// Replace text for particular annotation
+		// Documents.PDF.replaceTextForParticularAnnotation();
+
+		// Replace text for particular XObject with formatting
+		// Documents.PDF.replaceTextForParticularXObjectWithFormatting();
+
+		// Replace text for particular artifact with formatting
+		// Documents.PDF.replaceTextForParticularArtifactWithFormatting();
+
+		// Replace text for particular annotation with formatting
+		// Documents.PDF.replaceTextForParticularAnnotationWithFormatting();
+
+		// Replace image for particular XObject
+		// Documents.PDF.replaceImageForParticularXObject();
+
+		// Replace image for particular artifact
+		// Documents.PDF.replaceImageForParticularArtifact();
+
+		// Replaces image for particular annotation
+		// Documents.PDF.replaceImageForParticularAnnotation();
 
 		System.out.println("Completed...");
 	}
