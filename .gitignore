@@ -1,0 +1,7 @@
+/Examples/target/
+/Examples/.classpath
+/Examples/.project
+/Examples/.settings/
+
+deploy_key
+/Examples/.idea/
